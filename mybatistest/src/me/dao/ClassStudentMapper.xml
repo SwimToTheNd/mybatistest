@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="me.dao.ClassStudentMapper">
+
+	<resultMap type="clazz" id="clazzinfoResultMap">
+		<id property="id" column="id"/>
+		<result property="classname" column="code" javaType="string" jdbcType="VARCHAR"/>
+		<collection property="students" column="id" javaType="list" ofType="student" select="selectStudentByClassId"></collection>
+	</resultMap>
+	
+	<select id="getClazzInfo" resultMap="clazzinfoResultMap">
+		SELECT * FROM tb_class;
+	</select>
+	
+	<select id="selectStudentByClassId" resultType="student">
+		select * from tb_student where class_id = #{id}
+	</select>
+</mapper>
