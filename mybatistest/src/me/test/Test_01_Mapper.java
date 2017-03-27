@@ -1,7 +1,9 @@
 package me.test;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
@@ -19,7 +21,11 @@ public class Test_01_Mapper {
 	public static void main(String[] args) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSession();
 		BookMapper bookMapper = sqlSession.getMapper(BookMapper.class);
-		Book book = bookMapper.getBookById(1);
+		Book book = bookMapper.getBookById(100);
+		Map<String, Book> map = new HashMap<String, Book>();
+		map.put("book", book);
+		System.out.println(book);
+		System.out.println(JSON.toJSONString(map, SerializerFeature.WriteDateUseDateFormat));
 		// JSON.DEFFAULT_DATE_FORMAT = "yyyy/mm/dd";
 		System.out.println(JSON.toJSONString(book, SerializerFeature.WriteDateUseDateFormat));
 		System.out.println(book.toString());
@@ -39,7 +45,7 @@ public class Test_01_Mapper {
 		book2.setRemark("小说文档");
 		int result = bookMapper.insertBook(book2);
 		System.out.println("result:"+result);
-		sqlSession.commit();
+//		sqlSession.commit();
 		System.out.println("===============================================");
 	}
 

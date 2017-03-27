@@ -26,4 +26,15 @@
 	<select id="getDebtPlatStruct" resultMap="getDebtPlatStructResultMap">
 		select debt_type from debtplatstruct group by debt_type
 	</select>
+	
+	<select id="getDebtPlatStructInfoById" resultMap="getDebtPlatStructInfoResultMap">
+		select * from debtplatstruct where period = #{period}
+	</select>
+	
+	<resultMap type="DebtPlatStructInfo" id="getDebtPlatStructInfoResultMap">
+		<id property="id" column="id"/>
+		<result property="period" column="period"/>
+		<result property="debtType" column="debt_type"/>
+		<result property="debtTypeLv" column="debt_type_lv"/>
+	</resultMap>
 </mapper>
