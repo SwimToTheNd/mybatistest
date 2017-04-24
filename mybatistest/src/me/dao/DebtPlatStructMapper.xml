@@ -13,7 +13,7 @@
 		</collection>
 	</resultMap>
 	
-	<select id="selectPeriodByDebtType" resultType="string">
+	<select id="selectPeriodByDebtType" resultType="string" >
 		select distinct period from debtplatstruct where debt_type = #{debt_type}
 		order by period
 		limit 0, 5;

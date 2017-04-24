@@ -19,7 +19,7 @@ public class Test_02_encrypTest {
 		hobbyList.add("543钓鱼");
 		EncryptBean encryptBean = new EncryptBean("韩立", enPassword, enId);
 		encryptBean.setHobby(encodeListString(hobbyList));
-//		EncryptUtil.encryptBean(EncryptBean.class, encryptBean);
+		// EncryptUtil.encryptBean(EncryptBean.class, encryptBean);
 		System.out.println(encryptBean.toString());
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		try {
@@ -29,6 +29,7 @@ public class Test_02_encrypTest {
 				| InvocationTargetException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	public static List<String> encodeListString(List<String> list) {

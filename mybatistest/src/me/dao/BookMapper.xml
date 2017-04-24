@@ -17,4 +17,16 @@
 		publication, price, image, remark)
 		values(#{name},#{author},#{publicationdate},#{publication},#{price},#{image},#{remark});
 	</insert>
+	
+	<select id="selectAllBook" parameterType="string" resultType="list">
+		select * from tb_book where name = #{name}
+	</select>
+	
+	<select id="selectMapTest" resultType="map">
+		select 1, 2, 3, 4
+	</select>
+	
+	<select id="selectListTest" resultType="list">
+		select 1, 2, 3, 4
+	</select>
 </mapper>

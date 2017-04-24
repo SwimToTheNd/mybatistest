@@ -21,7 +21,7 @@ public class Test_01_Mapper {
 	public static void main(String[] args) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSession();
 		BookMapper bookMapper = sqlSession.getMapper(BookMapper.class);
-		Book book = bookMapper.getBookById(100);
+		Book book = bookMapper.getBookById(1);
 		Map<String, Book> map = new HashMap<String, Book>();
 		map.put("book", book);
 		System.out.println(book);
@@ -47,6 +47,10 @@ public class Test_01_Mapper {
 		System.out.println("result:"+result);
 //		sqlSession.commit();
 		System.out.println("===============================================");
+//		List<Object> record = bookMapper.selectAllBook("疯狂Ajax讲义");
+		Map<String, Object> testMap = bookMapper.selectMapTest();
+		System.out.println(testMap);
+		List<Object> testList = bookMapper.selectListTest();
 	}
 
 }
